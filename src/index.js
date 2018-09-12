@@ -2,6 +2,7 @@ import {
   ApolloServer
 } from 'apollo-server-express';
 
+import users from '../users';
 import schema from './schema'
 import resolvers from './resolvers'
 
@@ -14,6 +15,9 @@ app.use( cors() );
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
+  context: {
+    me: users[0],
+  }
 });
 
 server.applyMiddleware({

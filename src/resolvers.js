@@ -1,23 +1,9 @@
-const users = [
-  {
-    firstName: 'Brent',
-    lastName: 'Greeff',
-    email: 'brent@brent.com',
-  },
-  {
-    firstName: 'Jan-Michael',
-    lastName: 'Vincent',
-  },
-  {
-    firstName: 'Jan-Michael',
-    lastName: 'Vincent',
-  },
-];
+import users from '../users';
 
 const resolvers = {
   Query: {
-    me: () => {
-      return users[0];
+    me: (parent, args, { me }) => {
+      return me;
     },
     user: (parent, { id }) => {
       return users[parseInt(id)];
@@ -28,7 +14,10 @@ const resolvers = {
   },
 
   User: {
-    fullName: (user) => {
+    fullName: (user, args, { me }) => {
+      if (user == me) {
+        return "Its ME";
+      }
       return `${user.firstName} ${user.lastName}`;
     }
   }
