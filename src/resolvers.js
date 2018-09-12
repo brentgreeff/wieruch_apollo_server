@@ -1,22 +1,35 @@
 const users = [
   {
-    username: `Brent Greeff`,
+    firstName: 'Brent',
+    lastName: 'Greeff',
+    email: 'brent@brent.com',
   },
   {
-    username: `1 Jan-Michael Vincent`,
+    firstName: 'Jan-Michael',
+    lastName: 'Vincent',
   },
   {
-    username: `2 Jan-Michael Vincent`,
+    firstName: 'Jan-Michael',
+    lastName: 'Vincent',
   },
 ];
 
 const resolvers = {
   Query: {
     me: () => {
-      return users[1];
+      return users[0];
     },
     user: (parent, { id }) => {
       return users[parseInt(id)];
+    },
+    users: () => {
+      return users;
+    },
+  },
+
+  User: {
+    fullName: (user) => {
+      return `${user.firstName} ${user.lastName}`;
     }
   }
 };

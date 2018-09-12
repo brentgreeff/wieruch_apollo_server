@@ -5,12 +5,15 @@ import {
 const schema = gql`
   type Query {
     user(id: ID!): User
+    users: [User!]
     me: User
   }
 
   type User {
     id: ID!
-    username: String!
+    firstName: String!
+    lastName: String!
+    fullName: String!
     email: String
   }
 `;
