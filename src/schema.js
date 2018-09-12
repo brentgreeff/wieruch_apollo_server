@@ -7,6 +7,9 @@ const schema = gql`
     user(id: ID!): User
     users: [User!]
     me: User
+
+    messages: [Message!]!
+    message(id: ID!): Message!
   }
 
   type User {
@@ -15,6 +18,12 @@ const schema = gql`
     lastName: String!
     fullName: String!
     email: String
+  }
+
+  type Message {
+    id: ID!
+    text: String!
+    user: User!
   }
 `;
 

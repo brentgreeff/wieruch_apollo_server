@@ -2,7 +2,7 @@ import {
   ApolloServer
 } from 'apollo-server-express';
 
-import users from '../users';
+import users from '../data/users';
 import schema from './schema'
 import resolvers from './resolvers'
 

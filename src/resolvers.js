@@ -1,4 +1,5 @@
-import users from '../users';
+import users from '../data/users';
+import messages from '../data/messages';
 
 const resolvers = {
   Query: {
@@ -11,6 +12,12 @@ const resolvers = {
     users: () => {
       return users;
     },
+    messages: () => {
+      return messages;
+    },
+    message: (parent, { id }) => {
+      return messages[parseInt(id)];
+    }
   },
 
   User: {
@@ -19,6 +26,12 @@ const resolvers = {
         return "Its ME";
       }
       return `${user.firstName} ${user.lastName}`;
+    }
+  },
+
+  Message: {
+    user: (message) => {
+      return users[message.userId];
     }
   }
 };
