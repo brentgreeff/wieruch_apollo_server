@@ -10,7 +10,7 @@ const schema = gql`
     me: User
 
     messages: [Message!]!
-    message(id: ID!): Message!
+    message(id: ID!): Message
   }
 
   type User {

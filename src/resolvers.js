@@ -7,7 +7,7 @@ const resolvers = {
       return me;
     },
     user: (parent, { id }) => {
-      return users[parseInt(id)];
+      return users.find(user => user.id == id);
     },
     userByLastName: (parent, { lastName }) => {
       return users.filter(user => user.lastName == lastName);
@@ -19,7 +19,7 @@ const resolvers = {
       return messages;
     },
     message: (parent, { id }) => {
-      return messages[parseInt(id)];
+      return messages.find(message => message.id == id);
     }
   },
 
