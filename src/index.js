@@ -1,10 +1,4 @@
-import {
-  ApolloServer
-} from 'apollo-server-express';
-
-import users from '../data/users';
-import schema from './schema'
-import resolvers from './resolvers'
+import { ApolloServer } from 'apollo-server-express';
 
 import cors from 'cors';
 import express from 'express';
@@ -12,7 +6,11 @@ import express from 'express';
 const app = express();
 app.use( cors() );
 
-const server = new ApolloServer({
+import users from '../data/users';
+import schema from './schema';
+import resolvers from './resolvers'
+
+const apollo = new ApolloServer({
   typeDefs: schema,
   resolvers,
   context: {
@@ -20,9 +18,9 @@ const server = new ApolloServer({
   }
 });
 
-server.applyMiddleware({
+apollo.applyMiddleware({
   app,
-  path: '/graphql'
+  path: '/graphiql'
 });
 
 app.listen({ port: 3000 }, () => {
