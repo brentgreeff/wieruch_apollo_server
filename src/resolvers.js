@@ -12,7 +12,9 @@ const resolvers = {
     },
 
     userByLastName: (parent, { lastName }) => {
-      return users.filter(user => user.lastName == lastName);
+      return users.filter(
+        user => user.lastName.toLowerCase() == lastName.toLowerCase()
+      );
     },
 
     users: () => {
