@@ -9,6 +9,9 @@ const resolvers = {
     user: (parent, { id }) => {
       return users[parseInt(id)];
     },
+    userByLastName: (parent, { lastName }) => {
+      return users.filter(user => user.lastName == lastName);
+    },
     users: () => {
       return users;
     },
