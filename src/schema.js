@@ -5,7 +5,7 @@ import {
 const schema = gql`
   type Query {
     user(id: ID!): User
-    userByLastName(lastName: String!): [User]
+    userByLastName(lastName: String!): [User!]
     users: [User!]
     me: User
 
