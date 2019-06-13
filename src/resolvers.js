@@ -6,18 +6,23 @@ const resolvers = {
     me: (parent, args, { me }) => {
       return me;
     },
+
     user: (parent, { id }) => {
       return users.find(user => user.id == id);
     },
+
     userByLastName: (parent, { lastName }) => {
       return users.filter(user => user.lastName == lastName);
     },
+
     users: () => {
       return users;
     },
+
     messages: () => {
       return messages;
     },
+
     message: (parent, { id }) => {
       return messages.find(message => message.id == id);
     }
